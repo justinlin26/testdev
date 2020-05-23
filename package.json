@@ -1,25 +1,12 @@
-{
+{{
   "name": "testdev",
-  "version": "1.0.0",
-  "description": "",
-  "engines":{
-    "node": "12.16.x"
-  },
+  "description": "Our sample Node to Heroku app",
   "main": "server.js",
-  "dependencies": {},
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ghostcat17/testdev.git"
-  },
-  "author": "Justin Lin",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ghostcat17/testdev/issues"
-  },
-  "homepage": "https://github.com/ghostcat17/testdev#readme"
+  "dependencies": {
+    "ejs": "~1.0.0",
+    "express": "~4.9.8"
+  }
 }
