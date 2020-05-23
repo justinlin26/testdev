@@ -17,7 +17,10 @@ app.get('/', function(req, res) {
     // ejs render automatically looks in the views folder
     res.render('index');
 });
-
+fetch('testdev3.herokuapp.com')
+    .then(response => response.json)
+    .then(data => console.log);
+    
 app.listen(port, function() {
     console.log('Our app is running on http://localhost:' + port);
 });
