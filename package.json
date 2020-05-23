@@ -1,0 +1,25 @@
+{
+  "name": "testdev",
+  "version": "1.0.0",
+  "description": "",
+  "engines":{
+    "node": "12.16.x"
+  },
+  "main": "server.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghostcat17/testdev.git"
+  },
+  "author": "Justin Lin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ghostcat17/testdev/issues"
+  },
+  "homepage": "https://github.com/ghostcat17/testdev#readme"
+}
