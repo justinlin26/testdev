@@ -25,7 +25,7 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
-app.get('/results/search', async (req, res) => {
+app.get('/search', async (req, res) => {
   var search = req.param('query');
   try {
     const client = await pool.connect();
