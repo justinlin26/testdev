@@ -12,8 +12,6 @@ const pool = new Pool({
     rejectUnauthorized: false
   }
 });
-
-
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
@@ -26,11 +24,16 @@ app.get('/', function(req, res) {
     // ejs render automatically looks in the views folder
     res.render('index');
 });
-app.get('/db', async (req, res) => {
+
+app.get('/results/search', async (req, res) => {
+  var search = req.param('query');
   try {
     const client = await pool.connect();
-    const result = await client.query('SELECT * FROM test1');
+    const result = await client.query('SELECT * FROM test1' );
+    
     const results = { 'results': (result) ? result.rows : null};
+    
+    console.log(result);
     res.render('db', results );
     client.release();
   } catch (err) {
@@ -38,6 +41,7 @@ app.get('/db', async (req, res) => {
     res.send("Error " + err);
   }
 });
+
 app.get("/aboutus", function(req,res){
     //ejs render automatically looks in the views folder
     res.render('aboutus');
@@ -45,5 +49,6 @@ app.get("/aboutus", function(req,res){
 app.listen(port, function() {
     console.log('Our app is running on http://localhost:' + port);
 });
+
 
 

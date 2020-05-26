@@ -1,5 +1,7 @@
-function sendtoPage(){
-   var input = document.getElementById("search-bar").value;
-   
 
+
+function sendtoPage(){
+   search = document.getElementById("search-bar").value;
+   window.location.href = 'https://testdev3.herokuapp.com/search?query='+search;
 }
+
