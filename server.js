@@ -33,7 +33,7 @@ app.get('/search', async (req, res) => {
     
     const results = { 'results': (result) ? result.rows : null};
     
-    console.log(result);
+    window.alert(result);
     res.render('db', results );
     client.release();
   } catch (err) {
