@@ -24,7 +24,15 @@ app.get('/', function(req, res) {
     // ejs render automatically looks in the views folder
     res.render('index');
 });
+function find_in_object(my_object, my_criteria){
 
+  return my_object.filter(function(obj) {
+    return Object.keys(my_criteria).every(function(c) {
+      return obj[c] == my_criteria[c];
+    });
+  });
+
+}
 app.get('/search', async (req, res) => {
   var search = req.param('query');
   try {
@@ -32,9 +40,10 @@ app.get('/search', async (req, res) => {
     const result = await client.query('SELECT * FROM test1' );
     
     const results = { 'results': (result) ? result.rows : null};
-    
-    console.log(search);
-    res.render('db', results );
+    const sresult = JSON.stringify(results);
+    const fresult = find_in_object(JSON.parse(sresult),{companyname: search});
+    console.log(fresult);
+    res.render('db', fresult);
     client.release();
   } catch (err) {
     console.error(err);
