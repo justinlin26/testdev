@@ -11,14 +11,15 @@
    
 </head>
 <body>
-<header><h1>Welcome</h1></header>
-  <main>
-    <form class = "search-form">
-      <label for="search">search</label>
-      <input class="u-full-width" type = "text" id = "search" name = "search">
-      <button class="button-primary">Search</button>
-    </form>
-  </main>
+
+  <div class="wrap">
+    <div class="search">
+       <input type="text" class="searchTerm" placeholder="What are you looking for?" value="" id="search-bar">
+       <button type="submit" class="searchButton" onclick="sendtoPage();">
+         <i class="fa fa-search"></i>
+      </button>
+    </div>
+ </div>
  <script type="text/javascript" src="js/javascript.js"></script>
 </body>
 </html>

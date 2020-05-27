@@ -1,15 +1,14 @@
 var express = require('express');
 var app = express();
-const cors = require('cors');
-app.use(cors);
+
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
 var port = process.env.PORT || 8080;
-app.use(express.json);
+
 const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: {
+  ssl: { 
     rejectUnauthorized: false
   }
 });
