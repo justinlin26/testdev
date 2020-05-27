@@ -1,7 +1,12 @@
 
+const form = document.querySelector('form');
 
-function sendtoPage(){
-   search = document.getElementById("search-bar").value;
-   window.location.href = 'https://testdev3.herokuapp.com/search?query='+search;
-}
-
+form.addEventListener('submit',(event)=>{
+    event.preventDefault;
+    const formData = new FormData(form);
+    const search = formData.get('search');
+    const searchData = {
+        search
+    };
+    
+})
