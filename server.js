@@ -38,9 +38,7 @@ app.get('/search', async (req, res) => {
     const result = await client.query('SELECT * FROM test1' );
     
     const results = { 'results': (result) ? result.rows : null};
-    var fresult = filter(data,search);
-    
-  
+    var fresult = filter(results,search);
     console.log(fresult);
     res.render('db', fresult);
     client.release();
