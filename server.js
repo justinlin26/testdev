@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-
+var bodyParser = require('body-parser');
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
 var port = process.env.PORT || 8080;
@@ -17,7 +17,7 @@ app.set('view engine', 'ejs');
 
 // make express look in the public directory for assets (css/js/img)
 app.use(express.static(__dirname + '/public'));
-app.use(express.json({limit:'1mb'}));
+app.use(bodyParser.json);
 // set the home page route
 app.get('/', function(req, res) {
 
