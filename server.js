@@ -17,7 +17,7 @@ app.set('view engine', 'ejs');
 
 // make express look in the public directory for assets (css/js/img)
 app.use(express.static(__dirname + '/public'));
-
+app.use(express.json({limit:'1mb'}));
 // set the home page route
 app.get('/', function(req, res) {
 
@@ -31,16 +31,13 @@ function filter(data, companyname) {
       result = data.filter(function (item) { return item.companyname == companyname });
   return result;
 }
-app.get('/search', async (req, res) => {
+app.post('/search', async (req, res) => {
   var search = req.param('query');
   try {
     const client = await pool.connect();
-    const result = await client.query('SELECT * FROM test1' );
+    const result = await client.query('SELECT * FROM test1 WHERE '+search );
     
     const results = { 'results': (result) ? result.rows : null};
-    var ob = JSON.parse(results);
-    var fresult = filter(ob,search);
-    console.log(fresult);
     res.render('db', fresult);
     client.release();
   } catch (err) {
@@ -49,6 +46,13 @@ app.get('/search', async (req, res) => {
   }
 });
 
+app.get('/create',function(req,res){
+  res.render('newprofile');
+});
+app.post('/create',function(req,res){
+  console.log("I sent a request");
+  console.log(req.body);
+});
 app.get("/aboutus", function(req,res){
     //ejs render automatically looks in the views folder
     res.render('aboutus');
