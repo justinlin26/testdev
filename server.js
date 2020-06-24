@@ -25,33 +25,41 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
-function filter(data, companyname) {
-  var result = [];
-  if (companyname)
-      result = data.filter(function (item) { return item.companyname == companyname });
-  return result;
-}
 app.post('/search', async (req, res) => {
   var search = req.param('query');
+  console.log(search);
   try {
     const client = await pool.connect();
-    const result = await client.query('SELECT * FROM test1 WHERE '+search );
+    const result = await client.query('SELECT * FROM test1 WHERE companyname='+search);
     
     const results = { 'results': (result) ? result.rows : null};
-    res.render('db', fresult);
+    
     client.release();
   } catch (err) {
     console.error(err);
     res.send("Error " + err);
   }
 });
-
+app.get('/search', function(){
+  res.render('db', fresult);
+});
 app.get('/create',function(req,res){
   res.render('newprofile');
 });
 app.post('/create',function(req,res){
-  console.log("I sent a request");
+ 
   console.log(req.body);
+  try {
+    const client = await pool.connect();
+    const result = await client.query('INSERT INTO test1 (personid,lastname, firstname, companyname, companydescription) VALUES('+3+req.body[ln]+','+req.body[fn]+','+req.body[cn]+','+req.body[cd]);
+    
+    const results = { 'results': (result) ? result.rows : null};
+    
+    client.release();
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
 });
 app.get("/aboutus", function(req,res){
     //ejs render automatically looks in the views folder
