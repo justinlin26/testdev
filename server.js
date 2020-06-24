@@ -46,7 +46,7 @@ app.get('/search', function(){
 app.get('/create',function(req,res){
   res.render('newprofile');
 });
-app.post('/create',function(req,res){
+app.post('/create',async(req,res)=>{
  
   console.log(req.body);
   try {
