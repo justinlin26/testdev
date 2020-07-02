@@ -14,7 +14,9 @@ const pool = new Pool({
 });
 // set the view engine to ejs
 app.set('view engine', 'ejs');
-
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 // make express look in the public directory for assets (css/js/img)
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
@@ -51,7 +53,7 @@ app.post('/create',async(req,res)=>{
   console.log(req.body);
   try {
     const client = await pool.connect();
-    const result = await client.query('INSERT INTO test1 (personid,lastname, firstname, companyname, companydescription) VALUES('+3+req.body[lname]+','+req.body[fname]+','+req.body[cname]+','+req.body[cd]+');');
+    const result = await client.query('INSERT INTO test1 (personid,lastname, firstname, companyname, companydescription) VALUES('+3+req.body[ln]+','+req.body[fn]+','+req.body[cn]+','+req.body[cd]+');');
     
     const results = { 'results': (result) ? result.rows : null};
     
