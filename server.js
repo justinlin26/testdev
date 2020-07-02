@@ -56,7 +56,7 @@ app.post('/create',async(req,res)=>{
     const result = await client.query('INSERT INTO test1 (personid,lastname, firstname, companyname, companydescription) VALUES('+3+','+req.body[ln]+','+req.body[fn]+','+req.body[cn]+','+req.body[cd]+');');
     
     const results = { 'results': (result) ? result.rows : null};
-    
+    console.log("results sumbitted!!!!!!!!!!!!!!!"+results);
     client.release();
   } catch (err) {
     console.error(err);
