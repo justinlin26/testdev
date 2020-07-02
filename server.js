@@ -51,7 +51,7 @@ app.post('/create',async(req,res)=>{
   console.log(req.body);
   try {
     const client = await pool.connect();
-    const result = await client.query('INSERT INTO test1 (personid,lastname, firstname, companyname, companydescription) VALUES('+3+req.body[lname]+','+req.body[fname]+','+req.body[cname]+','+req.body[cd]);
+    const result = await client.query('INSERT INTO test1 (personid,lastname, firstname, companyname, companydescription) VALUES('+3+req.body[lname]+','+req.body[fname]+','+req.body[cname]+','+req.body[cd]+');');
     
     const results = { 'results': (result) ? result.rows : null};
     
