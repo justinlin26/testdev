@@ -32,7 +32,7 @@ app.post('/search', async (req, res) => {
   console.log(search);
   try {
     const client = await pool.connect();
-    const result = await client.query('SELECT * FROM test1 WHERE companyname='+search);
+    const result = await client.query('SELECT * FROM users WHERE companyname='+search);
     
     const results = { 'results': (result) ? result.rows : null};
     
@@ -62,6 +62,7 @@ app.post('/create',async(req,res)=>{
     console.error(err);
     res.send("Error " + err);
   }
+  return res.redirect('https://testdev3.herokuapp.com/');
 });
 app.get("/aboutus", function(req,res){
     //ejs render automatically looks in the views folder
