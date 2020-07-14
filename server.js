@@ -30,7 +30,7 @@ app.get('/', function(req, res) {
 
 app.get('/search', async(req,res)=>{
   
-  var search = req.query.q;
+  var search = req.body.q;
     console.log(search);
     
   try {
