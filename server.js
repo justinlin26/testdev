@@ -27,12 +27,15 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
-app.post('/search', async (req, res) => {
-  var search = req.param('query');
-  console.log(search);
+
+app.get('/search', async(req,res)=>{
+  
+  var search = req.query.q;
+    console.log(search);
+    
   try {
     const client = await pool.connect();
-    const result = await client.query('SELECT * FROM users WHERE companyname='+search);
+        const result = await client.query('SELECT * FROM users WHERE companyname='+search);
     
     const results = { 'results': (result) ? result.rows : null};
     
@@ -41,9 +44,6 @@ app.post('/search', async (req, res) => {
     console.error(err);
     res.send("Error " + err);
   }
-});
-app.get('/search', function(){
-  res.render('db', fresult);
 });
 app.get('/create',function(req,res){
   res.render('newprofile');

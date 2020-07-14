@@ -1,20 +1,12 @@
 
 
-function sendtoPage(){
-   var query = document.getElementById("search-bar").value;
-   const data = {query};
-   const options = {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers:{
-         'Content-Type':'application/json'
-      }
-   };
-   fetch("/search", options);
+async function sendtoPage(){
+   console.log("hello");
+  document.location.href = 'http://testdev3.herokuapp.com/search';
 }
 
 async function create(){
-   
+   console.log("hello");
    var ln = document.getElementById("lname").value;
    var fn = document.getElementById("fname").value;
    var cn = document.getElementById("cname").value;
