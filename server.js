@@ -62,7 +62,7 @@ app.post('/create',async(req,res)=>{
     console.error(err);
     res.send("Error " + err);
   }
-  return res.redirect('https://testdev3.herokuapp.com/');
+  
 });
 app.get("/aboutus", function(req,res){
     //ejs render automatically looks in the views folder
