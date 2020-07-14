@@ -35,7 +35,7 @@ app.get('/search', async(req,res)=>{
     
   try {
     const client = await pool.connect();
-        const result = await client.query('SELECT * FROM users WHERE companyname='+search);
+        const result = await client.query("SELECT * FROM users WHERE companyname='"+search+"';");
     
     const results = { 'results': (result) ? result.rows : null};
     
