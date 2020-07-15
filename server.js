@@ -31,12 +31,12 @@ app.get('/', function(req, res) {
 app.get('/search', async(req,res)=>{
   
   var search = req.body.q;
-    console.log(search);
+    console.log(search+'hello!!!!');
     
   try {
     const client = await pool.connect();
         const result = await client.query("SELECT * FROM users WHERE companyname='"+search+"';");
-    
+      
     const results = { 'results': (result) ? result.rows : null};
     
     client.release();
