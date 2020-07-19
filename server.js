@@ -41,7 +41,7 @@ app.get('/search', async(req,res)=>{
     const results = { 'results': (result) ? result.rows : null};
     
     client.release();
-    res.render(db,results);
+    res.render('db',results);
   } catch (err) {
     console.error(err);
     res.send("Error " + err);
