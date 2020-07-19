@@ -57,8 +57,10 @@ app.post('/create',async(req,res)=>{
     const result = await client.query("INSERT INTO users VALUES('"+req.body.lname+"','"+req.body.fname+"','"+req.body.cname+"','"+req.body.cd+"');");
     
     const results = { 'results': (result) ? result.rows : null};
+    
     console.log("results sumbitted!!!!!!!!!!!!!!!"+results);
     client.release();
+    res.redirect('/');
   } catch (err) {
     console.error(err);
     res.send("Error " + err);
