@@ -10,10 +10,10 @@
 
 <div class="container">
 <h2>Search results</h2>
-
+<%- include('partials/navbar') %>
 <ul>
     <% results.forEach(function(r) { %>
-        <li><%= r.personid %> - <%= r.lastname %> - <%= r.firstname %> - <%= r.companyname %> - <%= r.companydescription %></li>
+        <li><%= r.lastname %> - <%= r.firstname %> - <%= r.companyname %> - <%= r.companydescription %></li>
     <% }); %>
 </ul>
 
