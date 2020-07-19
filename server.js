@@ -54,7 +54,7 @@ app.post('/create',async(req,res)=>{
   console.log(req.body);
   try {
     const client = await pool.connect();
-    const result = await client.query("INSERT INTO users VALUES('"+req.body.ln+"','"+req.body.fn+"','"+req.body.cn+"','"+req.body.cd+"');");
+    const result = await client.query("INSERT INTO users VALUES('"+req.body.lname+"','"+req.body.fname+"','"+req.body.cname+"','"+req.body.cd+"');");
     
     const results = { 'results': (result) ? result.rows : null};
     console.log("results sumbitted!!!!!!!!!!!!!!!"+results);
