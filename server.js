@@ -12,11 +12,12 @@ const pool = new Pool({
     rejectUnauthorized: false
   }
 });
+const client = await pool.connect();
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
   extended: true
-}))
+}));
 // make express look in the public directory for assets (css/js/img)
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
@@ -30,12 +31,11 @@ app.get('/', function(req, res) {
 
 app.get('/search', async(req,res)=>{
   
-  var search = req.body.q;
+  var search = req.params.q;
     console.log(search+'hello!!!!');
     
   try {
-    const client = await pool.connect();
-        const result = await client.query("SELECT * FROM users WHERE companyname='"+search+"';");
+     const result = await client.query("SELECT * FROM users WHERE companyname='"+search+"';");
       
     const results = { 'results': (result) ? result.rows : null};
     
@@ -52,7 +52,7 @@ app.post('/create',async(req,res)=>{
  
   console.log(req.body);
   try {
-    const client = await pool.connect();
+   
     const result = await client.query("INSERT INTO users VALUES('"+req.body.ln+"','"+req.body.fn+"','"+req.body.cn+"','"+req.body.cd+"');");
     
     const results = { 'results': (result) ? result.rows : null};
@@ -64,10 +64,7 @@ app.post('/create',async(req,res)=>{
   }
   
 });
-app.get("/aboutus", function(req,res){
-    //ejs render automatically looks in the views folder
-    res.render('aboutus');
-});
+
 app.listen(port, function() {
     console.log('Our app is running on http://localhost:' + port);
 });
