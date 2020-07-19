@@ -30,8 +30,8 @@ app.get('/', function(req, res) {
 
 
 app.get('/search', async(req,res)=>{
-  
-  var search = req.params.q;
+    console.log(req.query);
+  var search = req.query.q;
     console.log(search+'hello!!!!');
     
   try {
