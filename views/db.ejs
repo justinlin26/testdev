@@ -10,7 +10,7 @@
 
 <div class="container">
 <h2>Search results</h2>
-<%- header -%>
+<% include /partials/header %>
 <ul>
     <% results.forEach(function(r) { %>
         <li><%= r.lastname %> - <%= r.firstname %> - <%= r.companyname %> - <%= r.companydescription %></li>
