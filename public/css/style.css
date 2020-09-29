@@ -28,7 +28,7 @@ header {
   position: fixed;
   float: left;
   margin: 16px 46px;
-  color: #fff;
+  color: rgb(78, 76, 67);
   font-weight: bold;
   font-size: 20px;
   letter-spacing: 2px;
@@ -45,7 +45,7 @@ nav ul {
   list-style: none;
   background: rgba(0, 0, 0, 0);
   overflow: hidden;
-  color: #fff;
+  color: rgb(78, 76, 67);
   padding: 0;
   text-align: right;
   margin: 0;
@@ -64,7 +64,7 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: #fff;
+  color: rgb(78, 76, 67);
   font-size: 16px;
 }
 
@@ -76,7 +76,7 @@ nav ul li a {
   box-sizing: border-box;
   padding: 15px 24px;
   cursor: pointer;
-  color: #fff;
+  color: rgb(78, 76, 67);
   display: none;
 }
 
