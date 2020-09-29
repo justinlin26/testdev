@@ -25,9 +25,24 @@ app.use(bodyParser.json());
 app.get('/', function(req, res) {
 
     // ejs render automatically looks in the views folder
-    res.render('index');
+    res.render('home');
 });
+app.get('/shop', async(req, res)=> {
 
+  try {
+    const client = await pool.connect();
+     const result = await client.query("SELECT * FROM users;");
+      
+    const results = { 'results': (result) ? result.rows : null};
+    
+    client.release();
+    res.render('home',results);
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+ 
 
 app.get('/search', async(req,res)=>{
     console.log(req.query);
@@ -75,6 +90,3 @@ app.get("/aboutus", function(req,res){
 app.listen(port, function() {
     console.log('Our app is running on http://localhost:' + port);
 });
-
-
-

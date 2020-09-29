@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
-<h1>New Profile</h1>
+
     
 <head>
-  
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <% include /partials/header %>
+    <div>
     <form action = "/create" method='POST'>
        
         <label for="fname">First name:</label><br>
@@ -18,12 +19,12 @@
         <label for="cname">Company Name:</label><br>
         <input type="text" id="cname" name="cname"><br>
         <label for="cd">Company Description:</label><br>
-        <input type="text" id="cd" name="cd"><br>
+        <textarea></textarea><br>
         
         <button type="submit"> Submit </button>
 
     </form>
-
+    </div>
 
 
     <script type="text/javascript" src="client.js"></script>
