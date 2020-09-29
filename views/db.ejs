@@ -13,9 +13,13 @@
 <h2>Search results</h2>
 <% include /partials/header %>
 <ul>
+    <div class="row"></div>
     <% results.forEach(function(r) { %>
-        <li><%= r.lastname %> - <%= r.firstname %> - <%= r.companyname %> - <%= r.companydescription %></li>
-    <% }); %>
+        
+            <div class="column">
+            
+        <li><img src = <%= r.imgsrc %> > - <%= r.lastname %> - <%= r.firstname %> - <%= r.companyname %> - <%= r.companydescription %></li>
+    <% }); %> </div>
 </ul>
 
 </div>
